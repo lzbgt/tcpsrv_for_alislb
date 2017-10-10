@@ -46,6 +46,8 @@ func handleRequest(conn net.Conn) {
 	_, err := conn.Read(buf)
 	if err != nil {
 		//fmt.Println("Error reading:", err.Error())
+                conn.Close()
+                return
 	}
 	// Send a response back to person contacting us.
 	conn.Write([]byte("\n"))
